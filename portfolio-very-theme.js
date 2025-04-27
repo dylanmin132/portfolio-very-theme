@@ -26,13 +26,7 @@ export class PortfolioVeryTheme extends DDDSuper(I18NMixin(LitElement)) {
       ...this.t,
       title: "Title",
     };
-    this.registerLocalization({
-      context: this,
-      localesPath:
-        new URL("./locales/portfolio-very-theme.ar.json", import.meta.url).href +
-        "/../",
-      locales: ["ar", "es", "hi", "zh"],
-    });
+  
   }
 
   // Lit reactive properties
@@ -60,6 +54,30 @@ export class PortfolioVeryTheme extends DDDSuper(I18NMixin(LitElement)) {
       h3 span {
         font-size: var(--portfolio-very-theme-label-font-size, var(--ddd-font-size-s));
       }
+    .topScreen {
+      position: fixed;
+      top: 20px;
+      left: 0;
+      width: 100vw;
+      background-color: var(--ddd-theme-primary, #0078d4);
+      color: #fff;
+      padding: 16px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      z-index: 1000;
+      border-radius: 8px;
+
+    }
+    button {
+      padding: 8px 16px;
+      background-color: var(--ddd-theme-primary, #0078d4);
+      color: #fff;
+      border-radius: 4px;
+      }
+    button:hover {
+      background-color: var(--ddd-theme-secondary, #005a9e)
+    }
+    
     `];
   }
 
@@ -67,7 +85,10 @@ export class PortfolioVeryTheme extends DDDSuper(I18NMixin(LitElement)) {
   render() {
     return html`
 <div class="wrapper">
-  <h3><span>${this.t.title}:</span> ${this.title}</h3>
+  <div class="topSection">
+    <h3><span>${this.t.title}:</span> ${this.title}</h3>
+    <p>${this.subtitile}</p>
+  </div>
   <slot></slot>
 </div>`;
   }
