@@ -6,99 +6,133 @@ import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
-/**
- * `portfolio-very-theme`
- * 
- * @demo index.html
- * @element portfolio-very-theme
- */
 export class PortfolioVeryTheme extends DDDSuper(I18NMixin(LitElement)) {
-
+  
   static get tag() {
     return "portfolio-very-theme";
   }
 
   constructor() {
     super();
-    this.title = "";
-    this.t = this.t || {};
-    this.t = {
-      ...this.t,
-      title: "Title",
-    };
-  
   }
 
-  // Lit reactive properties
   static get properties() {
     return {
       ...super.properties,
       title: { type: String },
+      subtitle: { type: String },
     };
   }
 
-  // Lit scoped styles
   static get styles() {
-    return [super.styles,
-    css`
-      :host {
-        display: block;
-        color: var(--ddd-theme-primary);
-        background-color: var(--ddd-theme-accent);
-        font-family: var(--ddd-font-navigation);
-      }
-      .wrapper {
-        margin: var(--ddd-spacing-2);
-        padding: var(--ddd-spacing-4);
-      }
-      h3 span {
-        font-size: var(--portfolio-very-theme-label-font-size, var(--ddd-font-size-s));
-      }
-    .topScreen {
-      position: fixed;
-      top: 20px;
-      left: 0;
-      width: 100vw;
-      background-color: var(--ddd-theme-primary, #0078d4);
-      color: #fff;
-      padding: 16px;
-      text-align: center;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      z-index: 1000;
-      border-radius: 8px;
+    return [
+      super.styles,
+      css`
+        :host {
+          display: block;
+          background-color: var(--ddd-theme-accent, #f9f9f9);
+          font-family: var(--ddd-font-navigation, sans-serif);
+        }
 
-    }
-    button {
-      padding: 8px 16px;
-      background-color: var(--ddd-theme-primary, #0078d4);
-      color: #fff;
-      border-radius: 4px;
-      }
-    button:hover {
-      background-color: var(--ddd-theme-secondary, #005a9e)
-    }
-    
-    `];
+        .wrapper {
+          margin: 0;
+          padding-top: 100px; 
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        
+        nav {
+          position: fixed;
+          background: white;
+          border-bottom: 1px solid #ccc;
+          z-index: 1000;
+        }
+
+        nav ul {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+
+        nav a {
+          text-decoration: none;
+          color: var(--ddd-theme-primary);
+          font-weight: bold;
+          padding: 1rem;
+          display: block;
+        }
+
+        nav a:hover {
+          text-decoration: underline;
+        }
+
+        header {
+          text-align: center;
+          margin-bottom: 2rem;
+        }
+
+        h1 {
+          color: var(--ddd-theme-primary, #0078d4);
+          margin: 0;
+          font-size: 2.5rem;
+        }
+
+        h2 {
+          margin: 0.5rem 0;
+          font-weight: normal;
+          color: #444;
+        }
+
+        section {
+          min-height: 100vh;
+          width: 100%;
+          padding: 2rem;
+          box-sizing: border-box;
+        }
+
+        ::slotted(*) {
+          line-height: 1.6;
+          color: #333;
+        }
+      `
+    ];
   }
 
-  // Lit render the HTML
   render() {
     return html`
-<div class="wrapper">
-  <div class="topSection">
-    <h3><span>${this.t.title}:</span> ${this.title}</h3>
-    <p>${this.subtitile}</p>
-  </div>
-  <slot></slot>
-</div>`;
-  }
+      <div class="wrapper">
+        <header>
+          <h1>${this.title}</h1>
+          <h2>${this.subtitle}</h2>
+        </header>
 
-  /**
-   * haxProperties integration via file reference
-   */
+        <section id="about">
+          <slot name="about"></slot>
+        </section>
+
+        <section id="research">
+          <slot name="research"></slot>
+        </section>
+
+        <section id="projects">
+          <slot name="projects"></slot>
+        </section>
+
+        <section id="profDev">
+          <slot name="profDev"></slot>
+        </section>
+      </div>
+    `;
+  }
+  
   static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
-      .href;
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url).href;
   }
 }
 

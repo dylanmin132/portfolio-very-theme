@@ -2,102 +2,67 @@
 <html lang="en">
 
 <head>
-  <base href="/">
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="Description" content="Demonstration for portfolio-very-theme">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Portfolio Showcase">
+  <title>Portfolio</title>
+  
   <style>
-    :root, html, body {
-      margin: 0;
-      padding: 0;
+    :root {
       --ddd-theme-primary: #0078d4;
+      --ddd-theme-accent: #fefefe;
     }
-
-    .topScreen {
-      position: fixed;
-      top: 20px;
-      left: 0;
-      width: 100vw;
-      background-color: var(--ddd-theme-primary, #0078d4);
-      padding: 16px;
+    
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: var(--ddd-theme-accent);
+      padding: 0;
+    }
+    
+    .content {
       text-align: center;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      z-index: 1000;
-      border-radius: 8px;
+      padding: 2rem;
+      max-width: 1200px;
     }
   </style>
-  
-  <title>portfolio-very-theme</title>
 </head>
 
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#research">Research</a></li>
-        <li><a href="#projects">Presentations and Publications</a></li>
-        <li><a href="#profDev">Professional Development</a></li>
-      </ul>
-    </nav>
-  </header>
 
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#projects">Projects & Publications</a></li>
+      <li><a href="#profDev">Professional Development</a></li>
+    </ul>
+  </nav>
 
-  <portfolio-very-theme title="Welcome to my portfolio">
-    <div slot="topScreen">
-      
-
+  <portfolio-very-theme>
+    
+    <div slot="about" class="content">
+      <h3>About Me</h3>
+      <p>I am currently an undergraduate student at Penn State University studying Cybersecurity.</p>
+    </div>
+    
+    <div slot="research" class="content">
+      <h3>Research</h3>
+      <p>I have yet to do any research related to my field</fieldset>.</p>
+    </div>
+    
+    <div slot="projects" class="content">
+      <h3>Projects & Publications</h3>
+      <p>I have worked on a few projects including network design and alot of hands on experience with networking tools.</p>
+    </div>
+    
+    <div slot="profDev" class="content">
+      <h3>Professional Development</h3>
+      <p>I have yet to do any professional development.</p>
     </div>
   </portfolio-very-theme>
 
-  <portfolio-very-theme>
-    <portfolio-screen title="About">
-      <p>A bunch of content here</p>
-    </portfolio-screen>
-  </portfolio-very-theme>
-  
-  <portfolio-very-theme>
-    <portfolio-screen title="About">
-      <p>A bunch of content here</p>
-    </portfolio-screen>
-  </portfolio-very-theme>
-  
-  <portfolio-very-theme>
-    <portfolio-screen title="About">
-      <p>A bunch of content here</p>
-    </portfolio-screen>
-  </portfolio-very-theme>
-
-  <portfolio-very-theme>
-    <portfolio-screen title="About">
-      <p>A bunch of content here</p>
-    </portfolio-screen>
-  </portfolio-very-theme>
-
-  <portfolio-very-theme>
-    <portfolio-screen title="About">
-      <p>A bunch of content here</p>
-    </portfolio-screen>
-  </portfolio-very-theme>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <script type="module" src="./portfolio-very-theme.js"></script>
 </body>
+
 </html>
